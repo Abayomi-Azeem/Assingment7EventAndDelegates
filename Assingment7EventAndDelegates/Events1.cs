@@ -21,17 +21,24 @@ namespace Assingment7EventAndDelegates
         {
             var rnd = new Random();
             ArrayList specialNumbers = new ArrayList() { 1089, 6174, 1729, 666 };
-            for (int i = 0; i < 100000; i++)
+            try
             {
-                Console.WriteLine("Checking for Special Numbers");
-                var num = rnd.NextInt64(500, 7000);                          //Generate random number ebtween 500 and 7000
-                if (specialNumbers.Contains(num))
+                for (int i = 0; i < 100000; i++)
                 {
-                    EventhandlerArg arg = new EventhandlerArg();                //Instantiate the Event handler  argument class to set a property of an argument
-                    arg.SpecialNumber = (int)num;
-                    OnSpecialNumber(arg);                                       // invoke the event with the special number as an argument
+                    Console.WriteLine("Checking for Special Numbers");
+                    var num = rnd.NextInt64(500, 7000);                          //Generate random number ebtween 500 and 7000
+                    if (specialNumbers.Contains(num))
+                    {
+                        EventhandlerArg arg = new EventhandlerArg();                //Instantiate the Event handler  argument class to set a property of an argument
+                        arg.SpecialNumber = (int)num;
+                        OnSpecialNumber(arg);                                       // invoke the event with the special number as an argument
+                    }
                 }
-             }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Found {e.Message} exception during counting");
+            }
         }
 
         protected virtual void OnSpecialNumber(EventArgs arg)
