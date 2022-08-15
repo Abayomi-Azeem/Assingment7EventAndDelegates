@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Assingment7EventAndDelegates
 {
 
-    internal class Delegates1
+    internal class ExpandLambda
     {
         public delegate bool Predicate(XClass x);  // Declaration of a Delegate that returns bool and takes an instance of XClass
 
